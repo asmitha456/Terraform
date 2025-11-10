@@ -1,3 +1,7 @@
+#usage of variables will make it easier to resue terraform files. Example AmI's are different per region
+#syntax of earlier 0.11 version, region="{$var.aws_region}
+#syntax of after 0.11 version, region=var.aws_region
+
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "aws_region" {
