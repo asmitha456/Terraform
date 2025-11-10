@@ -7,11 +7,12 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashi
 sudo apt update && sudo apt install terraform
 sudo apt install wget unzip vim -y
 terraform -v (Terraform v1.13.5)
-Initialize terraform - Terraform init
-Execution plan for your script - terraform plan
-Create infrastructure - terraform apply -auto-approve
-Validate script - terraform validate
+1. Terraform init - download and configure plugin for provider "aws"
+2. terraform plan - generate and shoe execution plan
+3. terraform apply - build the infrastructure
+4. terraform validate - validate all terraform files in present working directory
 
+#Login to AWS EC2 console and observe an EC@ instance getting deployed
 provider "aws"{
         access_key=""
         secret_key=""
