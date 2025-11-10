@@ -1,5 +1,7 @@
 Provider "aws"{
   region=var.aws_region
+  instance=var.aws_instance
+  ami=var.ami
 }
 
 #Creating VPC
