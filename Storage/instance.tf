@@ -1,0 +1,7 @@
+provider "aws"{
+  region="us-east-1"
+}
+resource "aws_instance" "backend_demo"{
+  ami="ami-0ecb62995f68bb549"
+  instance_type="t3.micro"
+}
