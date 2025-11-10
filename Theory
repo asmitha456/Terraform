@@ -33,3 +33,55 @@
     2. syntax of earlier 0.11 version, region="{$var.aws_region}
     3. syntax of after 0.11 version, region=var.aws_region
 
+#OUTPUT ATTRIBUTES
+    1. Outputs are only rendered when terraform applies your plan. Running terraform plan will not render outputs
+
+#TERRAFORM STATE
+    1. When run terraform in the working directory it creates terraform.tfstate file in the present working directory
+    2. This files contains in a custom JSON format.
+    3. It contains details of deployed infrastructure, public key, private and public IP address.
+
+#ROMOTE BACKEND FOR TERRAFORM STATE
+    1. Remote backend allows you to store the state file in a remote, shared storage.
+    2. supports amazon S3
+    3. It can solve human errors, unavailability of locking feature, leakage of sensitive data
+
+#AWS S3
+    1. it supports versioning, so revision of your state file is stored, you can rollback an older version.
+    2. supports encryption, 99.999999999% durability, 99.99% availability.
+    3. it's a managed service, so you don't need to deploy and manage extra infrastructure to use it.
+    4. we will create 3 files instance.tf - used to create aws instance, main.tf - used to create aws S3 bucket, backend.tf - used to save our state file in the s3 bucket
+
+#KEY PAIRs
+    1. We launch several instances so we can create key pair and register in aws and use this key to connect an ec2 instance
+
+#TERRAFORM MODULES
+    1. You can put your code inside of terraform module and reuse that module in multiple places throught the code
+    2. Modules are key ingridient to writing reusable, maintain and test terraform code.
+    3. The module in the current working directory is called root directory, we can use to one module from another module
+    4. SYNTAX - MODULE "<NAME>"{
+                    SOURCE = "<SOURCE>"
+                    [CONFIG]
+
+#VIRTUAL PRIVATE CLOUD
+    1. VPC is a virtual network dedicated to your aws account. you can specify IP range for vpc, add subnets, associate security groups and configure route table
+    2. Subnets are created in non-default VPC. subnet is a IP address in your vpc
+    3. Route table contains a set of rules called routes, that are used to determine where network traffic is directed.
+    4. Internet Gateway is a horizontally scaled, redundant, highly available vpc component that allowa communication b/w instances in your vpc and the internet
+    5. VPC endpoints enables you to privately connect your vpc to supported aws services powered by private link without requiring internet gateway, NAT device and VPN connection
+    6. To Protect AWS resorces in subnet use security including security groups and network access control lists (ACL)
+    7. A Subnet can only be associated with one route table at a time but one can associate multiple subnets with the same subnet route table
+
+#AUTOSCALING GROUP
+    1. ASG can manage lot of work automaticlly which can including clusters of ec2 instances
+    2. It can also monitor health of each instance, it can replace failed instance and adujust the size of cluster as per configuration based upon the load upon the servers
+    3. We have multiple servers each one have its own IP address but end user should have a single IP for access. To resolve this use ELB
+
+#AWS ELASTIC LOAD BALANCER
+    1. ELB havs high availability and is scalable at the same time can an difficult work.
+    2. Types: application, network and classic
+    3. Application Load balancer for balancing traffic like HTTP, HTTPS
+    4. Network Load balancer for balancing traffic like TCP, UDP & TLS.
+    5. Listerner Rule - takes request that comes into listener and sends it to those that matches specific paths or target groups
+    6. Target Groups - one or more server that recieve requests from  load balancer. it can perform healthy checks on destination server and 
+                        send request to nodes which are healthy and working fine
