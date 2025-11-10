@@ -1,0 +1,5 @@
+#VARIABLES
+    1. usage of variables will make it easier to resue terraform files. Example AmI's are different per region
+    2. syntax of earlier 0.11 version, region="{$var.aws_region}
+    3. syntax of after 0.11 version, region=var.aws_region
+
