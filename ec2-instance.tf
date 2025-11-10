@@ -11,3 +11,25 @@ Initialize terraform - Terraform init
 Execution plan for your script - terraform plan
 Create infrastructure - terraform apply -auto-approve
 Validate script - terraform validate
+
+provider "aws"{
+        access_key=""
+        secret_key=""
+        region="us-east-1"
+}
+
+resource "aws_instance" "Demo1"{
+        ami="ami-0ecb62995f68bb549"
+        instance_type="t3.micro"
+        tags={
+                name="Demo1"
+        }
+}
+If you dont want to write access keys in script then execute below commands
+  export aws_access_key_id=""
+  export aws_secret_key=""
+  export aws_default_region="us-east-1"
+  terraform plan
+
+
+
