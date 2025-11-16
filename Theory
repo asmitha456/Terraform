@@ -32,6 +32,7 @@
     1. usage of variables will make it easier to resue terraform files. Example AmI's are different per region
     2. syntax of earlier 0.11 version, region="{$var.aws_region}
     3. syntax of after 0.11 version, region=var.aws_region
+    4. We can supply variables runtime also.
 
 #OUTPUT ATTRIBUTES
     1. Outputs are only rendered when terraform applies your plan. Running terraform plan will not render outputs
